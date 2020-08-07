@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% load static wagtailimages_tags wagtailcore_tags %}
+
+{% block content %}
+<header class="bg-lilac">
+    <div style="background-image: url({% static 'img/children-smile.jpg' %})" class="bg-cover">
+        <div class="mw9 pv4 ph6-l ph4 white cover-text">
+            <h3 class="f2 f1-m f-headline-l  lh-copy white">{{ page.title }} Us</h3>
+            <nav class="f6 fw6 ttu tracked b">
+                <a class="" href="{{ page.get_parent.url }}" title="Home">Home</a> -
+                <span class="">{{ page.title }}</span>
+            </nav>
+        </div>
+    </div>
+</header>
+<section class="make-difference py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 mb-2 white">
+                <p class="f4">Volunteering with us can be incredibly rewarding because you will be contributing to making a difference to the lives of the young people we serve. Click the button to become a volunteer with us today.</p>
+            </div>
+            <div class="col-md-5 pt-3">
+                <button class="btn theme-btn btn btn-lg btn-block">Become a Volnteer</button>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="meet-trustees py-5">
+    <div class="container">
+        <h1 class="tc mb-5 f1">Meet the Trustees</h1>
+        <div class="row row-cols-1 row-cols-xl-3 row-cols-lg-3 row-cols-md-2">
+            <div class="col mb-4">
+                <div class="card h-100">
+                    <img class="card-img-top" src="{% static 'img/children-in-class.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in
+                            to
+                            additional codddddddddddddddddddddddddddddntent. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="{% static 'img/children-in-class.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in
+                            to
+                            additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="{% static 'img/children-in-class.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in
+                            to
+                            additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="{% static 'img/children-in-class.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in
+                            to
+                            additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+<section class="info-section-with-image py-5 bg-black">
+    <div class="container">
+        <div class="row">
+            <div class="col mt-4 mx-5">
+                {% with blocks=page.about_content %}
+                {% for block in blocks %}
+                {% if block.block_type == 'subheading' %}
+                <h2 class="b f3-m f2-l ttu gold my-3 bb">{{block.value}}</h2>
+                {% elif block.block_type == 'paragraph' %}
+                <div class="f4-l f5-m white">
+                    {{block.value}}
+                </div>
+                {% endif %}
+                {% endfor %}
+                {% endwith %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

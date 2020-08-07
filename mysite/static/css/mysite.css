@@ -6,27 +6,36 @@
   --lgrey: #E5E5E5;
 }
 
-* {
-  font-size: 1rem;
-}
-
 hr {
   background-color: var(--lgrey);
 }
-
+.rich-text p{
+  font-size: 1.2rem;
+  text-align: justify;
+}
 .bg-lilac {
   background-color: var(--lilac);
 }
 
+.t-lilac {
+  color: var(--lilac);
+}
+
 .bg-skyblue {
   background-color: var(--blue);
+}
+.t-blue {
+  color: var(--blue);
+}
+.t-yellow {
+  color: var(--yellow);
 }
 
 .bg-dgrey {
   background-color: var(--dgrey);
 }
 
-.btn {
+.theme-btn {
   color: var(--dgrey);
   font-weight: 600;
   padding: 0.75rem 2rem;
@@ -36,10 +45,38 @@ hr {
   background-color: var(--lilac);
 }
 
-.btn:hover {
+.theme-btn:hover {
   border: 1px solid var(--yellow);
   background-color: var(--yellow);
   color: var(--dgrey);
+}
+
+.theme-btn2 {
+  color: var(--dgrey);
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  transition: all 0.4s ease-in-out;
+  border-radius: 30px;
+  background-color: var(--lilac);
+}
+
+.theme-btn2:hover {
+  background-color: var(--lgrey);
+  color: var(--dgrey);
+}
+
+.theme-btn3 {
+  color: var(--dgrey);
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  transition: all 0.4s ease-in-out;
+  border-radius: 30px;
+  background-color: var(--yellow);
+}
+
+.theme-btn3:hover {
+  background-color: var(--dgrey);
+  color: var(--lilac);
 }
 
 .nav-link {
@@ -114,4 +151,190 @@ a .social {
 a .social:hover {
   background-color: var(--yellow);
   transition: all 0.4s ease-in-out;
+}
+
+.owl-carousel {
+  position: relative;
+}
+.owl-next, .owl-prev {
+  position: absolute;
+  font-size: 200px;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+}
+.owl-next {
+  right: 0;
+  display: flex;
+}
+.owl-prev{
+  left: 0;
+  display: flex;
+}
+
+.owl-carousel .owl-dots {
+  position: absolute;
+  bottom: 2%;
+  width: 100%;
+}
+
+.owl-carousel .owl-dots {
+  text-align: center;
+}
+
+.owl-carousel .owl-dots .owl-dot {
+  width: 15px;
+  height: 15px;
+  margin: 5px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  outline: none !important;
+  position: relative;
+  -webkit-transition: .3s all ease;
+  -o-transition: .3s all ease;
+  transition: .3s all ease;
+}
+.owl-carousel .owl-dots .owl-dot.active {
+  border: 2px solid white;
+}
+
+.owl-carousel .owl-dots .owl-dot.active {
+  background: var(--yellow);
+}
+
+.owl-theme .owl-dots .owl-dot span{
+  visibility: hidden;
+}
+
+.owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev, .owl-carousel button.owl-dot {
+  background: 0 0;
+  color: var(--lilac);
+  width: 100px;
+  height: 100px;
+  font-size: 100px;
+}
+
+.owl-carousel button:focus {
+  outline: none;
+}
+.owl-theme .owl-nav {
+  margin-top: 0;
+}
+.owl-theme .owl-nav [class*=owl-]:hover {
+  background: 0 0;
+  color: var(--yellow);
+  text-decoration: none;
+}
+
+.owl-carousel .item:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.2);
+  content: "";
+}
+
+.slider-info{
+  color: #fff;
+  position: absolute;
+  top: 20%;
+  left: 10%;
+}
+
+.slider-info [class*=col-]{
+  background-color: rgba(0, 0, 0, 0.692);
+  padding: 20px;
+}
+
+.smile-amazon{
+  background-color: var(--yellow);
+}
+
+.our-mission{
+  background-color: var(--lilac);
+}
+
+.what-we-do{
+  background-color: var(--dgrey);
+}
+
+.what-we-do .card-title{
+  text-align: center;
+}
+
+.what-we-do .card-body{
+  background-color: var(--yellow);
+  padding: 30px;
+}
+
+.edu-value{
+  background-color: var(--lilac);
+}
+
+.make-donation{
+  background-color: var(--yellow);
+}
+
+.bg-cover{
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  z-index: 0;
+}
+.bg-h{
+  min-height: 500px;
+}
+header{
+  position: relative;
+}
+
+
+.cover-text{
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.make-difference{
+  background-color: var(--dgrey);
+}
+
+.card-img, .card-img-top {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.card{
+  border-radius: 0;
+  border: 2px solid var(--yellow);
+}
+
+.card-body{
+  background-color: var(--dgrey);
+}
+
+.meet-trustees{
+  background-color: var(--lilac);
+}
+
+.sq-icon {
+  width:50px;
+  height:50px;
+  box-sizing:border-box;
+  text-align:center;
+  display:inline-block;
+  line-height:50px;
+  background-color:var(--dgrey);
+}
+
+.round-icon {
+  color: var(--dgrey);
+  width:30px;
+  height:30px;
+  box-sizing:border-box;
+  border-radius: 50%;
+  text-align:center;
+  display:inline-block;
+  line-height:30px;
+  background-color:var(--lilac);
 }

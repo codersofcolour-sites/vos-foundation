@@ -1,10 +1,129 @@
 {% extends "base.html" %}
-{% load static wagtailcore_tags %}
+{% load static wagtailcore_tags wagtailembeds_tags %}
 
 
-    
+
 {% block content %}
-<h1 class="f1">{{ self.title }}</h1>
-    {{ page.body|richtext }}
-{% endblock %}
+<div class="owl-carousel owl-theme">
+  <div class="item relative">
+    <img src="{% static 'images/children-in-class.jpg' %}"  alt="">
+    <div class="container slider-info">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <h1>Donate for education</h1>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate, quidem! Minus eveniet quos, ullam modi
+            nemo sunt beatae, laudantium impedit suscipit tempore architecto ea earum nihil deleniti. Placeat, esse
+            eaque.
+          </p>
+          <button class="btn">Donate</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="item">
+    <img src="{% static 'images/children-in-class.jpg' %}" alt="">
+  </div>
+</div>
+<section class="smile-amazon py-5">
+  <div class="container">
+    <p class="f3-m f3-l">Support the <b class="f3-m f3-l">Vivian Osunkoya Shodipo (VOS) Foundation</b> when you shop at
+      <b class="f3-m f3-l">smile.amazon.co.uk</b>.</p>
+    <p class="f3-m f3-l">For each purchase you make, Amazon donate to our charity.</p>
+    <a href="#" target="_blank">
+      <img src="{% static 'images/amazon-btn.png' %}" width="250" alt="">
+    </a>
 
+  </div>
+</section>
+<section class="our-mission py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 mb-5 pr-5">
+        <h1>Our Mission</h1>
+        <p class="f5-l tj">
+          Our mission is to make a difference by inspiring and empowering young people to be the best they can in
+          changing their world. We will make programs and activities accessible to every young person and equip them for
+          either further education or world of work. We want young people to see themselves as leaders of tomorrow and
+          have the opportunity to improve their knowledge to create change in their communities. We realise this is a
+          big challenge, and we are ready to begin on this journey. We are always looking for like-minded people to
+          support us in this adventurous and exciting journey.
+        </p>
+      </div>
+      <div class="col-md-6">
+        <img src="{% static 'images/children-in-class.jpg' %}" alt="">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="what-we-do py-5">
+  <div class="container tj white">
+    <h1>What We Do</h1>
+    <p class="f4-l f5-m">
+      The VOS Foundation is a non-profit charitable organisation committed to the educational development of young
+      people in regions of Nigeria.
+    </p>
+    <p class="f4-l f5-m">
+      We make educational supplies, programs and activities accessible to young people by way of building and developing
+      capabilities so that everyone can fulfil their potential and participate positively as citizens
+    </p>
+    <div class="card-deck mt-5 black">
+      <div class="card">
+        <img src="{% static 'images/children-in-class.jpg' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Empowering</h5>
+          <p class="card-text">Our provision of learning materials and facilities help to empower individuals and
+            provide the platform to relieve poverty for the less privileged.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="{% static 'images/children-in-class.jpg' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Inspiring</h5>
+          <p class="card-text">Fostering sound relationships and collaboration with educational establishments both in
+            the UK and Nigeria help ensure we are responsive to needs of young people and inspire confidence.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="{% static 'images/children-in-class.jpg' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Promoting good citizenship</h5>
+          <p class="card-text">We promote good citizenship through the delivery of life saving first aid awareness
+            sessions.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+<section class="edu-value py-5">
+  <div class="container">
+    <p class="f2-l f4-m">
+      We advance educational values, equip and prepare young people for world of work, trade or profession.
+    </p>
+  </div>
+</section>
+<section class="make-donation py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7 pr-5">
+        <div class="embed-responsive embed-responsive-16by9 mb-5">
+          {% embed 'https://www.youtube.com/watch?v=lKHWovtK3EE' %}
+        </div>
+      </div>
+      <div class="col-md-5 mb-5">
+        <h2 class="grey fw7">Make a Donation</h2>
+        <p class="f5-l">
+          If you would like to make a donation today, click the donate button below
+        </p>
+        <button class="btn theme-btn2 mb-5">Donate</button>
+
+        <h2 class="grey fw7">Become a Supporter Today</h2>
+        <p class="f5-l">
+          Volunteering with us can be incredibly rewarding because you will be contributing to making a difference to the lives of the young people we serve. Click the button to become a volunteer with us today.        </p>
+        <button class="btn theme-btn2">Become a Volunteer</button>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

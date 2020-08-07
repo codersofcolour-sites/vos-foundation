@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+<header class="bg-lilac">
+    <div style="background-image: url({% static 'img/children-smile.jpg' %})" class="bg-cover">
+        <div class="mw9 pv4 ph6-l ph4 white cover-text">
+            <h3 class="f2 f1-m f-headline-l  lh-copy white">{{page.title}}</h3>
+            <nav class="f6 fw6 ttu tracked b">
+                <a href="{{ page.get_parent.url }}" title="Home">Home</a> -
+                <span class="">{{page.title}}</span>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<section class="bg-lilac py-5">
+    <div class="container tj">
+        {% with blocks=self.history_content %}
+        {% for block in blocks %}
+            {% if block.block_type == 'paragraph' %}
+            <div class="f3-l f4-m f2-ns ">
+                {{ block.value }}
+            </div>
+            {% elif block.block_type == 'image' %}
+            <div class="row my-4">
+                <div class="mx-auto text-center">
+                    {% image block.value width-600 class="img-fluid" %}
+                </div>
+            </div>
+            {% elif block.block_type == 'embedded_video' %}
+            
+            <div class="embed-responsive embed-responsive-16by9 my-5">
+            {{ block.value }}
+            </div> 
+
+            {% else %}
+            <section class="block-{{ block.block_type }}">
+                {{ block }}
+            </section>
+            {% endif %}
+        {% endfor %}
+    {% endwith %}
+    </div>
+</section>
+{% endblock %}

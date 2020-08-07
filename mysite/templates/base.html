@@ -1,5 +1,6 @@
-{% load static wagtailuserbar wagtailfontawesome %}
+{% load static wagtailcore_tags wagtailuserbar wagtailfontawesome wagtailimages_tags menu_tags %}
 {% fontawesome_css %}
+
 
 <!DOCTYPE html>
 <html class="no-js" lang="en">
@@ -22,6 +23,8 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css" />
+  <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
   <link rel="stylesheet" href="{% static 'wagtailfontawesome/css/fontawesome.css' %}">
   <link rel="stylesheet" href="{% static 'css/mysite.css' %}">
 </head>
@@ -32,7 +35,11 @@
     <div class="container-fluid">
       <div class="site-logo mr-5">
         <a class="navbar-brand" href="#">
-          <img src="{% static 'img/vos-logo.jpg' %}" width="150" alt="">
+          {% if settings.site_settings.WebsiteLogo.website_logo %}
+          {% image settings.site_settings.WebsiteLogo.website_logo width-150  %}   
+          {% else %}
+          <img src="{% static 'images/logo-placeholder.png' %}" width="100" alt="">
+          {% endif %}
         </a>
       </div>
 
@@ -43,33 +50,16 @@
 
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Gallery</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">News and Events</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Become a Supporter</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact Us</a>
-          </li>
+          {% main_menu template="menu.html" apply_active_classes=True add_sub_menus_inline=True %}
         </ul>
         <ul class="navbar-nav ml-5">
-          <a class="btn my-2" href="#">Donate</a>
+          <a class="btn my-2 theme-btn" href="#">Donate</a>
         </ul>
       </div>
     </div>
   </nav>
 
-  <div class="container">{% block content %}{% endblock %}</div>
+  {% block content %}{% endblock %}
 
   <footer class="bg-dgrey">
     <div class="contain">
@@ -86,9 +76,21 @@
         <div class="col-md-5 mb-3">
           <h3 class="white mb-3">Charity Information</h3>
           <ul>
-            <li><i class="fa fa-phone-square"></i> +44 (0)7534 368 386</li>
-            <li><i class="fa fa-envelope-square"></i> vosfoundation2017@gmail.com</li>
-            <li><i class="fa fa-address-book"></i> 87 Pembroke Avenue, Luton, Bedfordshire, United Kingdom, LU4 9BJ</li>
+            <li>
+              <i class="fa fa-phone-square"></i>
+              Phone: <br>
+              +44 (0)7534 368 386
+            </li>
+            <li>
+              <i class="fa fa-envelope-square"></i>
+              Email: <br>
+              vosfoundation2017@gmail.com
+            </li>
+            <li>
+              <i class="fa fa-address-book"></i>
+              Address: <br>
+              87 Pembroke Avenue, Luton, Bedfordshire, United Kingdom, LU4 9BJ
+            </li>
         </div>
         <div class="col-md-4 mb-3">
           <ul>
@@ -98,38 +100,55 @@
         </div>
       </div>
       <hr>
-      <div class="row py-5 px-5 d-flex">
-        <div class="col-md-7 mb-3">
+      <div class="row py-3 px-5">
+        <div class="col-md-5 align-items-center mb-4">
+          <h3 class="white f4">Follow Us: </h3>
+          <div class="trustee-social my-1">
+            {% if settings.site_settings.SocialMediaSettings.email %}
+            <a href="{{settings.site_settings.SocialMediaSettings.email}}" target="_blank">
+              <i class="fa fa-envelope round-icon"></i>
+            </a>
+            {% endif %}
+            {% if settings.site_settings.SocialMediaSettings.facebook %}
+            <a href="{{settings.site_settings.SocialMediaSettings.facebook}}" target="_blank">
+              <i class="fa fa-facebook round-icon"></i>
+            </a>
+            {% endif %}
+            {% if settings.site_settings.SocialMediaSettings.twitter %}
+            <a href="{{settings.site_settings.SocialMediaSettings.twitter}}" target="_blank">
+              <i class="fa fa-twitter round-icon"></i>
+            </a>
+            {% endif %}
+            {% if settings.site_settings.SocialMediaSettings.instagram %}
+            <a href="{{settings.site_settings.SocialMediaSettings.instagram}}" target="_blank">
+              <i class="fa fa-instagram round-icon "></i>
+            </a>
+            {% endif %}
+            {% if settings.site_settings.SocialMediaSettings.linkedin %}
+            <a href="{{settings.site_settings.SocialMediaSettings.linkedin}" target="_blank">
+              <i class="fa fa-linkedin round-icon "></i>
+            </a>
+            {% endif %}
+            {% if settings.site_settings.SocialMediaSettings.youtube %}
+            <a href="{{settings.site_settings.SocialMediaSettings.youtube}}" target="_blank">
+              <i class="fa fa-youtube round-icon "></i>
+            </a>
+            {% endif %}
+            {% if settings.site_settings.SocialMediaSettings.pinterest %}
+            <a href="{{settings.site_settings.SocialMediaSettings.pinterest}}" target="_blank">
+              <i class="fa fa-pinterest round-icon "></i>
+            </a>
+            {% endif %}
+            <p>{{settings.site_settings.SocialMediaSettings}}</p>
+            
+          </div>
+        </div>
+        <div class="col-md-7 d-flex align-items-center">
           <h6 class="white">&#169; VOS, inc. <script type="text/javascript">
               document.write(new Date().getFullYear());
             </script>, All rights reserved | Made with <i class="fa fa-heart-o"></i> by
             <a href="https://github.com/amajai"> amajai</a>
           </h6>
-        </div>
-        <div class="col-md-5">
-          <h6 class="white inline-block">Follow Us:</h6>
-          <div class="row d-flex">
-            <a href="#">
-              <div class="inline-block social br-100 bg-lilac d-flex justify-content-center align-items-center">
-                <i class="fa fa-facebook fa-2x"></i>
-              </div>
-            </a>
-            <a href="#">
-              <div class="inline-block social br-100 bg-lilac d-flex justify-content-center align-items-center">
-                <i class="fa fa-instagram fa-2x"></i>
-              </div>
-            </a>
-            <a href="#">
-              <div class="inline-block social br-100 bg-lilac d-flex justify-content-center align-items-center">
-                <i class="fa fa-youtube fa-2x"></i>
-              </div>
-            </a>
-            <a href="#">
-              <div class="inline-block social br-100 bg-lilac d-flex justify-content-center align-items-center">
-                <i class="fa fa-twitter fa-2x"></i>
-              </div>
-            </a>
-          </div>
         </div>
       </div>
     </div>
@@ -144,7 +163,9 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
     integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
   </script>
+  <script type="text/javascript" src="{% static 'js/owl.carousel.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/mysite.js' %}"></script>
+
 </body>
 
 </html>

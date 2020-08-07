@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static wagtailimages_tags wagtailcore_tags %}
+
+{% block content %}
+<header class="bg-lilac">
+    <div style="background-image: url({% static 'img/children-smile.jpg' %})" class="bg-cover">
+        <div class="mw9 pv4 ph6-l ph4 white cover-text">
+            <h3 class="f2 f1-m f-headline-l  lh-copy white">Trustee</h3>
+            <nav class="f6 fw6 ttu tracked b">
+                <a href="{{ page.get_parent.get_parent.url  }}" title="Home">Home</a> -
+                <a href="{{ page.get_parent.url }}" title="Trustees">trustees</a> -
+                <span>{{ page.trustee_name }}</span>
+            </nav>
+        </div>
+    </div>
+</header>
+<section class="trustee py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 bg-cover mb-3">
+        {% image page.trustee_image fill-350x450 class='img-fluid' %}
+      </div>
+      <div class="col-md-9">
+        <h2 class="f1-l f2-m f3">{{ page.title }}</h2>
+        <h3 class="f3" >{{ page.trustee_role }}</h3>
+        <div class="trustee-social my-3">
+          {% if page.email %}
+          <a href="mailto:{{ page.email }}" target="_blank">
+            <i class="fa fa-envelope fa-2x sq-icon"></i>
+          </a>
+          {% endif %}
+
+          {% if page.facebook %}
+            <a href="{{ page.facebook }}" target="_blank">
+              <i class="fa fa-facebook fa-2x sq-icon"></i>
+            </a>
+          {% endif %}
+
+          {% if page.twitter %}
+            <a href="{{ page.twitter }}" target="_blank">
+              <i class="fa fa-twitter fa-2x sq-icon"></i>
+            </a>
+          {% endif %}
+          
+          {% if page.linkedin %}
+            <a href="{{ page.linkedin }}" target="_blank">
+              <i class="fa fa-linkedin fa-2x sq-icon"></i>
+            </a>
+          {% endif %}  
+          
+          {% if page.instagram %}
+            <a href="{{ page.instagram }}" target="_blank">
+              <i class="fa fa-instagram fa-2x sq-icon"></i>
+            </a>
+          {% endif %}
+          
+          {% if page.youtube %}
+            <a href="{{ page.youtube }}" target="_blank">
+              <i class="fa fa-youtube fa-2x sq-icon"></i>
+            </a>
+          {% endif %}        
+        </div>
+        {{ page.trustee_info|richtext}}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

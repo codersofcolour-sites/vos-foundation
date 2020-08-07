@@ -29,7 +29,16 @@ INSTALLED_APPS = [
     'home',
     'search',
     'blog',
+    'about',
+    'trustees',
+    'history',
     
+    'dashboard',
+    'site_settings',
+    
+    'wagtail.contrib.modeladmin',
+    'wagtail.contrib.settings',
+    'wagtailmenus',
     'wagtailfontawesome',
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -82,10 +91,15 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'wagtail.contrib.settings.context_processors.settings',
+
+                'wagtailmenus.context_processors.wagtailmenus',
             ],
         },
     },
