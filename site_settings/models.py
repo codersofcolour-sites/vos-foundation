@@ -35,7 +35,7 @@ class WebsiteLogo(BaseSetting):
     on_delete=models.SET_NULL,
     related_name="+",
   )
-  
+
 
   panels = [
     ImageChooserPanel('website_logo'),
@@ -43,3 +43,20 @@ class WebsiteLogo(BaseSetting):
 
   class Meta:
     verbose_name = 'Website Logo'
+
+@register_setting(icon='image')
+class WebsiteBannerImage(BaseSetting):
+  website_banner = models.ForeignKey(
+    "wagtailimages.Image",
+    null=True,
+    blank=False,
+    on_delete=models.SET_NULL,
+    related_name="+",
+  )
+  
+  panels = [
+    ImageChooserPanel('website_banner'),
+  ]
+
+  class Meta:
+    verbose_name = 'Website Banner Image'

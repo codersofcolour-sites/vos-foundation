@@ -3,12 +3,13 @@
 
 {% block content %}
 <header class="bg-lilac">
-    <div style="background-image: url({% static 'img/children-smile.jpg' %})" class="bg-cover">
+    {% image settings.site_settings.WebsiteBannerImage.website_banner original as img  %}   
+    <div style="background-image: url({{img.url}})" class="bg-cover">
         <div class="mw9 pv4 ph6-l ph4 white cover-text">
-            <h3 class="f2 f1-m f-headline-l  lh-copy white">{{page.title}}</h3>
+            <h3 class="f2 f1-m f-headline-l  lh-copy white">Trustees</h3>
             <nav class="f6 fw6 ttu tracked b">
                 <a href="{{ page.get_parent.url }}" title="Home">Home</a> -
-                <span class="">{{page.title}}</span>
+                <span class="">Trustees</span>
             </nav>
         </div>
     </div>
