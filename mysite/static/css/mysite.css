@@ -338,3 +338,8 @@ header{
   line-height:30px;
   background-color:var(--lilac);
 }
+
+.round-icon:hover {
+  transition: all 0.4s ease-in-out;
+  background-color:var(--yellow);
+}
