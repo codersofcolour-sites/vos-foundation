@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'about',
     'trustees',
     'history',
+    'beneficiaries',
     
     'dashboard',
     'site_settings',

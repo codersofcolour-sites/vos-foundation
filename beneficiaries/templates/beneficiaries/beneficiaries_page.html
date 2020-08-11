@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+<header class="bg-lilac">
+    {% image settings.site_settings.WebsiteBannerImage.website_banner original as img  %}
+    <div style="background-image: url({{img.url}})" class="bg-cover">
+        <div class="mw9 pv4 ph6-l ph4 white cover-text">
+            <h3 class="f2 f1-m f-headline-l  lh-copy white">{{page.title}}</h3>
+            <nav class="f6 fw6 ttu tracked b">
+                <a href="{{ page.get_parent.get_parent.url }}" title="Home">Home</a> -
+                <span class="">{{page.title}}</span>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<section class="bg-lilac py-5">
+    <div class="container">
+        {% for beneficiary in page.beneficiaries_list.all %}
+        <div class="row py-4">
+            <div class="col-lg-6 d-flex justify-content-center align-items-center">
+            {% image beneficiary.beneficiary_image width-400 class='fit-img' %}
+            </div>
+            <div class="col-lg-6">
+                <h2 class="b f4-m f3-l my-3">{{beneficiary.beneficiary_name}}
+                    {% if beneficiary.beneficiary_link  %}
+                    <a href="{{beneficiary.beneficiary_link}}" target="_blank"><i class="fa fa-link newlink"></i></a>    
+                    {% endif %}
+                </h2>  
+                {{beneficiary.beneficiary_info|richtext}}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

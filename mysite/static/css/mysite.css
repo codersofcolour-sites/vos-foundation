@@ -10,7 +10,7 @@ hr {
   background-color: var(--lgrey);
 }
 .rich-text p{
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   text-align: justify;
 }
 .bg-lilac {
@@ -150,6 +150,17 @@ a .social {
 
 a .social:hover {
   background-color: var(--yellow);
+  transition: all 0.4s ease-in-out;
+}
+
+a .newlink {
+  color: var(--dgrey);
+  transition: all 0.4s ease-in-out;
+  border-bottom: 3px dotted none;
+}
+
+a .newlink:hover {
+  color: var(--yellow);
   transition: all 0.4s ease-in-out;
 }
 
@@ -343,3 +354,27 @@ header{
   transition: all 0.4s ease-in-out;
   background-color:var(--yellow);
 }
+
+.dropdown-menu {
+  color: #212529;
+  background-color: #cbc7ff;
+  border: 1px solid rgba(0,0,0,.15);
+}
+
+.dropdown-item:focus, .dropdown-item:hover {
+  color: #16181b;
+  text-decoration: none;
+  background-color: #fdf4cf;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+  color: #29384e;
+  text-decoration: none;
+  background-color: #ffe473;
+}
+
+.fit-img{
+  width: 100%;
+  height: auto;
+}
+

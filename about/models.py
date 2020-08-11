@@ -7,7 +7,7 @@ from wagtail.core import blocks
 from wagtail.admin.edit_handlers import StreamFieldPanel
 
 class AboutPage(Page):   
-    subpage_types = ['trustees.TrusteesPage', 'history.HistoryPage']
+    subpage_types = ['trustees.TrusteesPage', 'history.HistoryPage', 'beneficiaries.BeneficiariesPage']
     max_count = 1 
     about_content = StreamField([
         ('subheading', blocks.RichTextBlock(icon="title", features=['h2'])),

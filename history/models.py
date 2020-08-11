@@ -18,6 +18,7 @@ from wagtail.core.rich_text import expand_db_html, RichText
 class HistoryPage(Page):
     subpage_types = []
     parent_types = ['about.AboutPage']
+    max_count = 1
     # Replace wrapped rich-text div
     RichText.__html__ = lambda self: expand_db_html(self.source)
 
