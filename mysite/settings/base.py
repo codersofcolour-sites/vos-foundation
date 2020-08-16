@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'history',
     'beneficiaries',
     'supporters',
+    'support',
     
     'dashboard',
     'site_settings',

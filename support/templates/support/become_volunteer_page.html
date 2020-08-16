@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+<header class="bg-lilac">
+    {% image settings.site_settings.WebsiteBannerImage.website_banner original as img  %}
+    <div style="background-image: url({{img.url}})" class="bg-cover">
+        <div class="mw9 pv4 ph6-l ph4 white cover-text">
+            <h3 class="f2 f1-m f-headline-l  lh-copy white">{{page.title}}</h3>
+            <nav class="f6 fw6 ttu tracked b">
+                <a href="{{ page.get_parent.get_parent.url }}" title="Home">Home</a> -
+                <span class="">{{page.title}}</span>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<section class="bg-lilac py-5">
+    <div class="container tj">
+        {% with blocks=self.volunteer_content %}
+        {% for block in blocks %}
+        {% if block.block_type == 'paragraph' %}
+        <div class="f3-l f4-m f2-ns">
+            {{ block.value }}
+        </div>
+        {% else %}
+        <section class="block-{{ block.block_type }}">
+            {{ block }}
+        </section>
+        {% endif %}
+        {% endfor %}
+        {% endwith %} 
+        <p class="f3-l f4-m f2-ns">{{ page.contact_info }}</p>
+        <p class="f3-l f4-m f2-ns"> <span class="b">Name: </span> {{ page.contact_name }}</p>
+        <p class="f3-l f4-m f2-ns"> <span class="b">Email: </span> <a class="black-90 hover-blue" href="mailto:{{ page.email }}">{{ page.email }}</a> </p>
+        <p class="f3-l f4-m f2-ns"> <span class="b">Phone: </span> {{ page.phone_number }}</p>
+    </div>
+</section>
+{% endblock %}
