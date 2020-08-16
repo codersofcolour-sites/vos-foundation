@@ -1,11 +1,83 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags %}
-    
+{% load wagtailimages_tags wagtailcore_tags %}
+
 {% block content %}
-    <h1>{{ page.title }}</h1>
-    <div class="intro">{{ page.intro|richtext }}</div>
-    {% for post in page.get_children %}
-        <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
-        {{ post.specific.date }}
-    {% endfor %}
+<header class="bg-lilac">
+    {% image settings.site_settings.WebsiteBannerImage.website_banner original as img  %}
+    <div style="background-image: url({{img.url}})" class="bg-cover">
+        <div class="mw9 pv4 ph6-l ph4 white cover-text">
+            <h3 class="f2 f1-m f-headline-l  lh-copy white">{{page.title}}</h3>
+            <nav class="f6 fw6 ttu tracked b">
+                <a href="{{ page.get_parent.get_parent.url }}" title="Home">Home</a> -
+                <span class="">{{page.title}}</span>
+            </nav>
+        </div>
+    </div>
+</header>
+{% if newspages %}
+<div class="pa5">
+    <div class="row justify-content-center mb-5">
+        <div class="col-md-7 heading-section text-center">
+            <h3>{{ page.intro }}</h3>
+        </div>
+    </div>
+    <div class="row row-cols-1 row-cols-xl-4 row-cols-lg-3 row-cols-md-2">
+
+        {% for post in newspages %}
+        <div class="col mb-4">
+            <div class="card h-100 bw5">
+                {% image post.specific.news_image fill-900x600 as img %}
+                <img src="{{img.url}}" class="card-img-top" alt="{{img.alt}}">
+                <div class="card-body">
+                    <a href="{% pageurl post %}">
+                        <h5 class="card-title b">{{ post.title }}</h5>
+                    </a>
+                    <p class="card-subtitle my-3 text-muted">{{ post.specific.date }}</p>
+                    {% if post.specific.first_paragraph %}
+                    <p class="card-title">
+                        {{post.specific.first_paragraph|richtext|striptags|truncatechars:120}}
+                    </p>
+                    {% endif %}
+                    <a href="{% pageurl post %}" class="btn btn-main btn-block">Read more</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+    {% else %}
+    <div class="justify-content-center py-5 bg-lilac">
+        <div class="container heading-section text-center">
+            <h3 class="f2 p-5">There are no article at the moment..</h3>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+{% if newspages.paginator.num_pages > 1 %}
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center pagination-lg mb-5">
+
+        <li class="page-item {% if not newspages.has_previous %} disabled {% endif %}">
+            <a class="page-link" {% if newspages.has_previous %} href="?page={{ newspages.previous_page_number }}"
+                {% endif %} tabindex="-1">Previous</a>
+        </li>
+
+        {% for page_num in newspages.paginator.page_range %}
+        <li class="page-item {% if page_num == newspages.number %} active{% endif %}">
+            <a href="?page={{ page_num }}" class="page-link">
+                {{ page_num }}
+            </a>
+        </li>
+        {% endfor %}
+
+        <li class="page-item {% if not newspages.has_next %} disabled{% endif %}">
+            <a class="page-link" {% if newspages.has_next %} href="?page={{ newspages.next_page_number }}"
+                {% endif %}>Next</a>
+        </li>
+
+    </ul>
+</nav>
+{% endif %}
+
 {% endblock %}

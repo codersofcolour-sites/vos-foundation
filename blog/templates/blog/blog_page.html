@@ -1,11 +1,61 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags wagtailimages_tags %}
-    
+
 {% block content %}
-    <h1>{{ page.title }}</h1>
-    <p class="meta">{{ page.date }}</p>
-    {% image page.image fill-320x320 %}
-    <div class="intro">{{ page.intro }}</div>
-    {{ page.body|richtext }}
-    <p><a href="{{ page.get_parent.url }}">Return to blog</a></p>
+
+<article>
+    {% image page.news_image fill-1200x500 as news_img %}
+    <div class="pa4 container mw9-l center mt-4">
+        <div class="row">
+            <div class="col-12">
+                <img src="{{news_img.url}}" alt="{{news_img.alt}}">
+            </div>
+        </div>
+        <h2 class="f1-ns f4 mt0 b black-90 mt-4">{{page.title}}</h2>
+        <p class="black-50 f4 mb-4">{{ page.date }}</p>
+        {% with blocks=self.news_content %}
+        {% for block in blocks %}
+        {% if block.block_type == 'paragraph' %}
+        <div class="f5 f4-ns lh-copy">
+            {{ block.value }}
+        </div>
+        {% elif block.block_type == 'image' %}
+        <div class="row my-4">
+            <div class="mx-auto text-center">
+                {% image block.value width-600 class="img-fluid" %}
+            </div>
+        </div>
+        {% elif block.block_type == 'quote' %}
+        <blockquote class="athelas ml0 mt0 pl4 black-90 bl bw2 b--gold">
+            <div class="pa2">
+                <p class="f5 f4-m f3-l lh-copy measure mt0">
+                    {{ block.value.quote_text }}
+                </p>
+                <cite class="f6 ttu tracked fs-normal">―
+                    {{ block.value.source }}
+                </cite>
+            </div>
+        </blockquote>
+        {% elif block.block_type == 'embedded_video' %}
+        {{ block.value }}
+    </div>
+    <div class="responsive-object">
+
+    </div>
+
+    {% else %}
+    <section class="block-{{ block.block_type }}">
+        {{ block }}
+    </section>
+    {% endif %}
+    {% endfor %}
+    {% endwith %}
+    </div>
+</article>
+<div class="tc mt3 mb-5">
+    <a href="{{ page.get_parent.url }}" class="f2 dib ph2 link mid-gray dim"><i class="fa fa-arrow-left"></i> 
+        Return to News
+    </a>
+</div>
+
 {% endblock %}
