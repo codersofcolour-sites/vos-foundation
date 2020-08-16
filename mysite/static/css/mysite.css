@@ -30,6 +30,9 @@ hr {
 .t-yellow {
   color: var(--yellow);
 }
+.bg-yellow2 {
+  background-color: var(--yellow);
+}
 
 .bg-dgrey {
   background-color: var(--dgrey);

@@ -5,7 +5,6 @@ from wagtail.core.fields import RichTextField
 from wagtail.admin.edit_handlers import StreamFieldPanel, InlinePanel
 from modelcluster.fields import ParentalKey
 from wagtail.core.models import Page, Orderable
-from wagtail.core.rich_text import expand_db_html, RichText
 from wagtail.images.edit_handlers import ImageChooserPanel
 
 class Beneficiaries(Orderable):

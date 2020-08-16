@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+<header class="bg-lilac">
+    {% image settings.site_settings.WebsiteBannerImage.website_banner original as img  %}
+    <div style="background-image: url({{img.url}})" class="bg-cover">
+        <div class="mw9 pv4 ph6-l ph4 white cover-text">
+            <h3 class="f2 f1-m f-headline-l  lh-copy white">{{page.title}}</h3>
+            <nav class="f6 fw6 ttu tracked b">
+                <a href="{{ page.get_parent.get_parent.url }}" title="Home">Home</a> -
+                <span class="">{{page.title}}</span>
+            </nav>
+        </div>
+    </div>
+</header>
+<section class="bg-yellow2 py-5">
+    <div class="tc">
+        <h4 class="f5 f4-m f3-l">{{ page.intro}}</h4>
+    </div>
+</section>
+<section class="bg-lilac py-5">
+    <div class="container">
+        <div class="row">
+            {% for supporter in page.supporters_list.all %}
+            <div class="col-12">
+                <h2 class="b f2">{{supporter.supporter_name}}</h2>
+                {% image supporter.supporter_image width-400 class='py-3'%}
+                {{supporter.supporter_info|richtext}}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
