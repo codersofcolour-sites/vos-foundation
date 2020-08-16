@@ -17,6 +17,7 @@
     {% endwith %}
     {% endblock %}
   </title>
+  <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
   <meta name="description" content="" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
@@ -105,7 +106,7 @@
           <h3 class="white f4">Follow Us: </h3>
           <div class="trustee-social my-1">
             {% if settings.site_settings.SocialMediaSettings.email %}
-            <a href="{{settings.site_settings.SocialMediaSettings.email}}" target="_blank">
+            <a href="mailto:{{settings.site_settings.SocialMediaSettings.email}}">
               <i class="fa fa-envelope round-icon"></i>
             </a>
             {% endif %}
