@@ -35,6 +35,8 @@ INSTALLED_APPS = [
     'beneficiaries',
     'supporters',
     'support',
+    'donate',
+    'streams',
     
     'dashboard',
     'site_settings',

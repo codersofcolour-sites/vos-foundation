@@ -320,11 +320,7 @@ header{
 
 .card{
   border-radius: 0;
-  border: 2px solid var(--yellow);
-}
-
-.card-body{
-  background-color: var(--dgrey);
+  border: 1px solid black;
 }
 
 .meet-trustees{

@@ -8,7 +8,7 @@
         <div class="mw9 pv4 ph6-l ph4 white cover-text">
             <h3 class="f2 f1-m f-headline-l  lh-copy white">Trustees</h3>
             <nav class="f6 fw6 ttu tracked b">
-                <a href="{{ page.get_parent.get_parentt.url }}" title="Home">Home</a> -
+                <a href="{{ page.get_parent.get_parent.url }}" title="Home">Home</a> -
                 <span class="">Trustees</span>
             </nav>
         </div>
@@ -41,11 +41,11 @@
                     <div class="card h-100">
                         {% image trustee.trustee_image fill-300x300 as img%}
                         <img class="card-img-top" src="{{img.url}}" alt="{{img.alt}}">
-                        <div class="card-body white">
+                        <div class="card-body">
                             <h5 class="card-title f3">{{trustee.title}}</h5>
                             <p class="card-text">{{trustee.trustee_info|richtext|striptags|truncatechars:150}}</p>
                             <a href="{% pageurl trustee %}" class="link">
-                                <p class="card-text f4">Learn more...</p>
+                                <p class="card-text f4 black hover-black-50">Learn more...</p>
                             </a>
                         </div>
                     </div>

@@ -4,15 +4,14 @@
 {% block content %}
 
 <article>
-    {% image page.news_image fill-1200x500 as news_img %}
+    {% image page.news_image original as news_img %}
     <div class="pa4 container mw9-l center mt-4">
         <div class="row">
-            <div class="col-12">
-                <img src="{{news_img.url}}" alt="{{news_img.alt}}">
+            <div class="col-12 bg-cover" style="background-image: url({{news_img.url}}); height:500px">
             </div>
         </div>
         <h2 class="f1-ns f4 mt0 b black-90 mt-4">{{page.title}}</h2>
-        <p class="black-50 f4 mb-4">{{ page.date }}</p>
+        <p class="black-50 f2 mb-4">{{ page.date }}</p>
         {% with blocks=self.news_content %}
         {% for block in blocks %}
         {% if block.block_type == 'paragraph' %}
@@ -26,7 +25,7 @@
             </div>
         </div>
         {% elif block.block_type == 'quote' %}
-        <blockquote class="athelas ml0 mt0 pl4 black-90 bl bw2 b--gold">
+        <blockquote class="athelas ml0 mt0 pl4 black-90 bl bw2 b--black">
             <div class="pa2">
                 <p class="f5 f4-m f3-l lh-copy measure mt0">
                     {{ block.value.quote_text }}
@@ -53,7 +52,7 @@
     </div>
 </article>
 <div class="tc mt3 mb-5">
-    <a href="{{ page.get_parent.url }}" class="f2 dib ph2 link mid-gray dim"><i class="fa fa-arrow-left"></i> 
+    <a href="{{ page.get_parent.url }}" class="f2 dib ph2 link mid-gray dim hover-black-50"><i class="fa fa-arrow-left"></i> 
         Return to News
     </a>
 </div>

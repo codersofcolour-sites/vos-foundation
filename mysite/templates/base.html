@@ -53,8 +53,9 @@
         <ul class="navbar-nav ml-auto">
           {% main_menu template="menu.html" apply_active_classes=True add_sub_menus_inline=True %}
         </ul>
+        
         <ul class="navbar-nav ml-5">
-          <a class="btn my-2 theme-btn" href="#">Donate</a>
+          <a class="btn my-2 theme-btn" href="{% slugurl 'donate' %}">Donate</a>
         </ul>
       </div>
     </div>

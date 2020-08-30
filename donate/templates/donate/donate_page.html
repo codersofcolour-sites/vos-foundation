@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+<header class="bg-lilac">
+  {% image settings.site_settings.WebsiteBannerImage.website_banner original as img  %}
+  <div style="background-image: url({{img.url}})" class="bg-cover">
+    <div class="mw9 pv4 ph6-l ph4 white cover-text">
+      <h3 class="f2 f1-m f-headline-l  lh-copy white">{{page.title}}</h3>
+      <nav class="f6 fw6 ttu tracked b">
+        <a href="{{ page.get_parent.url }}" title="Home">Home</a> -
+        <span class="">{{page.title}}</span>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<section class="py-5">
+  <div class="container">
+    <div class="row justify-content-center mb-3">
+      <div class="col-md-7 heading-section text-center">
+        <h3>{{page.header}}</h3>
+        <p>{{page.body}}</p>
+      </div>
+    </div>
+    <div class="row">
+      {% for block in page.donation_link %}
+      {% if block.block_type == 'paypal' %}
+      {% include_block block %}
+      {% else %}
+      {% include_block block %}
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  </div>
+  </div>
+</section>
+{% endblock %}
