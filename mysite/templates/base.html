@@ -35,7 +35,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-skyblue">
     <div class="container-fluid">
       <div class="site-logo mr-5">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="{% slugurl 'home' %}">
           {% if settings.site_settings.WebsiteLogo.website_logo %}
           {% image settings.site_settings.WebsiteLogo.website_logo width-150  %}   
           {% else %}

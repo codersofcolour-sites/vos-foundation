@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'streams',
     'contact',
     'widget_tweaks',
-    
+
+    'wagtail_simple_gallery',
     'dashboard',
     'site_settings',
     

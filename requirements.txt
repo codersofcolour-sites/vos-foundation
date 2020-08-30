@@ -84,6 +84,7 @@ Unidecode==1.1.1
 urllib3==1.25.8
 virtualenv==20.0.3
 wagtail==2.9.3
+wagtail-simple-gallery==0.8.0
 wagtailfontawesome==1.2.1
 wagtailmenus==3.0.2
 watchdog==0.10.2
