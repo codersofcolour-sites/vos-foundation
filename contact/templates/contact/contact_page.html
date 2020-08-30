@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags widget_tweaks wagtailimages_tags%}
+
+{% block content %}
+<header class="bg-lilac">
+  {% image settings.site_settings.WebsiteBannerImage.website_banner original as img  %}
+  <div style="background-image: url({{img.url}})" class="bg-cover">
+    <div class="mw9 pv4 ph6-l ph4 white cover-text">
+      <h3 class="f2 f1-m f-headline-l  lh-copy white">{{page.title|capfirst}}</h3>
+      <nav class="f6 fw6 ttu tracked b">
+        <a href="{{ page.get_parent.url }}" title="Home">Home</a> -
+        <span class="">{{page.title}}</span>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<section class="info-section-with-image py-5 bg-lilac">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h2 class="b f1 ttu my-2 tc">{{page.header}}</h2>
+        <p class="tc f4-l f5-m mb-5">{{page.intro}}</p>
+
+        <form action="{% pageurl page %}" method="POST" class="mx-5 f4">
+          {% csrf_token %}
+          <div class="row">
+            {% for field in form.visible_fields %}
+            <div class="col-md-12 form-group">
+              <label for="{{ field.id_for_label }}">{{field.label_tag}}</label>
+              {% render_field field class+="form-control form-control-lg" placeholder=field.help_text id=field.id_for_label %}
+              {% for error in field.errors %}
+              <span class="help-block">{{ error }}</span>
+              {% endfor %}
+            </div>
+            {% endfor %}
+          </div>
+
+          <button type="submit" class=" btn theme-btn3 btn-lg px-5 f5 px-4 b">
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+</section>
+
+{% endblock %}

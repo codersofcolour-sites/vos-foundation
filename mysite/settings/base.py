@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'support',
     'donate',
     'streams',
+    'contact',
+    'widget_tweaks',
     
     'dashboard',
     'site_settings',
