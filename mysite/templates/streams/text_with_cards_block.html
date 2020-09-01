@@ -1,0 +1,24 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+ 
+<section class="what-we-do py-5">
+  <div class="container tj white">
+    <h1>{{value.header}}</h1>
+    <div class="f4-l f5-m">
+      {{value.text}}
+    </div>
+    <section class="row row-cols-1 row-cols-xl-3 row-cols-lg-3 row-cols-md-2 py-5">
+      {% for card in value.cards %}
+      <div class="col mb-4">
+          <div class="card info-card h-100 mb-2">
+              {% image card.value.image fill-900x600 as img %}
+              <img src="{{img.url}}" class="card-img-top" alt="{{img.alt}}">
+              <div class="card-body info-card-body">
+                <h4 class="card-title b tl mb-2 t-yellow ">{{card.value.header}}</h4>
+                <div class="card-text">{{card.value.text}}</div>
+              </div>
+          </div>
+        </div>
+      {% endfor %}
+    </section>
+  </div>
+</section>

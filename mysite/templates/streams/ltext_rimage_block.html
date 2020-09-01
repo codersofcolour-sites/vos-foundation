@@ -1,0 +1,17 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+<section class="our-mission py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 mb-5 pr-5">
+        <h1>{{value.header}}</h1>
+        <div class="f5-l tj">
+          {{value.text}}
+        </div>
+      </div>
+      <div class="col-lg-6">
+        {% image value.image fill-700x500 class='img-fluid'%}
+      </div>
+    </div>
+  </div>
+</section>
+

@@ -225,7 +225,8 @@ a .newlink:hover {
   color: var(--lilac);
   width: 100px;
   height: 100px;
-  font-size: 100px;
+  font-size: 50px;
+  
 }
 
 .owl-carousel button:focus {
@@ -257,9 +258,16 @@ a .newlink:hover {
   left: 10%;
 }
 
-.slider-info [class*=col-]{
-  background-color: rgba(0, 0, 0, 0.692);
-  padding: 20px;
+.carousel-caption {
+  position: absolute;
+  right: 15%;
+  bottom: 40px;
+  left: 15%;
+  z-index: 10;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  color: #fff;
+  text-align: left;
 }
 
 .smile-amazon{
@@ -274,15 +282,23 @@ a .newlink:hover {
   background-color: var(--dgrey);
 }
 
-.what-we-do .card-title{
-  text-align: center;
-}
 
 .what-we-do .card-body{
-  background-color: var(--yellow);
-  padding: 30px;
+  background-color: var(--dgrey);
 }
 
+.video::after{
+  content: '';
+  position: absolute;
+  display: block;
+  background: url(owl.video.play.png);
+  height: 50%;
+  width: 50%;
+  top: 27%;
+  left: 35%;
+  background-size: 120px 120px;
+  background-repeat: no-repeat;
+}
 .edu-value{
   background-color: var(--lilac);
 }
@@ -320,9 +336,16 @@ header{
 
 .card{
   border-radius: 0;
-  border: 1px solid black;
+  border: 0;
 }
 
+.info-card{
+  border: 0;
+}
+.info-card-body{
+  padding: 0;
+  padding: 5px;
+}
 .meet-trustees{
   background-color: var(--lilac);
 }

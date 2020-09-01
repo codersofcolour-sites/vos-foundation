@@ -18,8 +18,8 @@ class DonatePage(Page):
 
     donation_link = StreamField(  
         StreamBlock (
-            [('gofundme', blocks.goFundMeBlock()), ('paypal', blocks.PaypalBlock())],
-            max_num=2
+            [('gofundme', blocks.goFundMeBlock()), ('paypal', blocks.PaypalBlock()), ('amazon_smile', blocks.AmazonSmileBlock()),],
+            max_num=3
         ), null=True
     )
     
