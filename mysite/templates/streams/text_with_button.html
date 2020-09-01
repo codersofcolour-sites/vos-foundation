@@ -1,0 +1,14 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+<section class="make-difference py-5">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-7 mb-2 white tj f5-l">
+            {{value.text}}
+          </div>
+          <div class="col-md-5 d-flex justify-content-center align-items-center">
+              <a class="btn f4 theme-btn btn px-5" href="{{value.Button_link.url}}">{{value.button_name}}</a>
+          </div>
+      </div>
+  </div>
+</section> 
+

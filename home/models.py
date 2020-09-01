@@ -43,6 +43,7 @@ class HomePage(Page):
         ('amazon_smile', blocks.AmazonSmileBlock()),
         ('ltext_rimage', blocks.TextWithRightImageBlock()),
         ('text_with_cards', blocks.TextWithCardsBlock()),
+        ('text_with_button', blocks.TextWithButtonBlock()),
         ('jumbo_text', blocks.JumboTextBlock()),
     ], blank=False, null=True)
 

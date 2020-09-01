@@ -14,24 +14,9 @@
         </div>
     </div>
 </header>
-<section class="make-difference py-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-7 mb-2 white tj">
-                <p class="f5-l">
-                    Volunteering with us can be incredibly rewarding because you will be contributing to
-                    making a difference to the lives of the young people we serve.
-                </p>
-                <p class="f5-l">
-                    Click the button to become a volunteer with us today.
-                </p>
-            </div>
-            <div class="col-md-5 d-flex justify-content-center align-items-center">
-                <button class="btn f4 theme-btn btn px-5">Become a Volnteer</button>
-            </div>
-        </div>
-    </div>
-</section>
+{% for block in page.content %}
+{% include_block block %}
+{% endfor %}
 <section class="meet-trustees py-5">
     <div class="container">
         <h1 class="tc mb-5 f1">Meet the Trustees</h1>
@@ -51,7 +36,6 @@
                     </div>
                 </div>
             {% endfor %}
-
         </div>
     </div>
 </section>

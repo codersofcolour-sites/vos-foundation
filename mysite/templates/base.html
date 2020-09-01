@@ -22,13 +22,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-  integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css" />
   <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
   <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
   <link rel="stylesheet" href="{% static 'wagtailfontawesome/css/fontawesome.css' %}">
   <link rel="stylesheet" href="{% static 'css/mysite.css' %}">
-  <link rel="stylesheet" href="{% static 'css/lity.min.css' %}" >
+  <link rel="stylesheet" href="{% static 'css/lity.min.css' %}">
 </head>
 
 <body class="{% block body_class %}{% endblock %}">
@@ -36,9 +36,9 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-skyblue">
     <div class="container-fluid">
       <div class="site-logo mr-5">
-        <a class="navbar-brand" href="{% slugurl 'home' %}">
+        <a class="navbar-brand" href="{% pageurl settings.site_settings.ImportantPages.home_page %}">
           {% if settings.site_settings.WebsiteLogo.website_logo %}
-          {% image settings.site_settings.WebsiteLogo.website_logo width-150  %}   
+          {% image settings.site_settings.WebsiteLogo.website_logo width-150  %}
           {% else %}
           <img src="{% static 'images/logo-placeholder.png' %}" width="100" alt="">
           {% endif %}
@@ -54,9 +54,11 @@
         <ul class="navbar-nav ml-auto">
           {% main_menu template="menu.html" apply_active_classes=True add_sub_menus_inline=True %}
         </ul>
-        
+
         <ul class="navbar-nav ml-5">
-          <a class="btn my-2 theme-btn" href="{% slugurl 'donate' %}">Donate</a>
+
+          <a class="btn my-2 theme-btn"
+            href="{% pageurl settings.site_settings.ImportantPages.donate_page %}">Donate</a>
         </ul>
       </div>
     </div>
@@ -70,35 +72,45 @@
         <div class="col-md-3 mb-3">
           <h3 class="white mb-3">Quick Links</h3>
           <ul>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">News and Events</a></li>
-            <li><a href="#">Become a Supporter</a></li>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="#">About Us</a></li>
+            {% main_menu template="quicklinks.html" apply_active_classes=True add_sub_menus_inline=True %}
           </ul>
         </div>
+        {% if settings.site_settings.FooterSetting.phone_number or settings.site_settings.FooterSetting.address %}
         <div class="col-md-5 mb-3">
           <h3 class="white mb-3">Charity Information</h3>
           <ul>
+            {% if settings.site_settings.FooterSetting.phone_number %}
             <li>
               <span class="b t-lilac">Phone:</span>
               <br>
-              +44 (0)7534 368 386
+              {{settings.site_settings.FooterSetting.phone_number}}
             </li>
+            {% endif %}
+
+            {% if settings.site_settings.FooterSetting.email %}
             <li>
-              <span class="b t-lilac">Email:</span> 
+              <span class="b t-lilac">Email:</span>
               <br>
-              vosfoundation2017@gmail.com
+              {{settings.site_settings.FooterSetting.email}}
             </li>
+            {% endif %}
+
+            {% if settings.site_settings.FooterSetting.address %}
             <li>
-             <span class="b t-lilac">Address:</span>  
-             <br>
-              87 Pembroke Avenue, Luton, Bedfordshire, United Kingdom, LU4 9BJ
+              <span class="b t-lilac">Address:</span>
+              <br>
+              {{settings.site_settings.FooterSetting.address}}
             </li>
+            {% endif %}
         </div>
+        {% endif %}
+
         <div class="col-md-4 mb-3">
           <ul>
-            <li>Registered Charity Number: 1179368</li>
+            {% if settings.site_settings.FooterSetting.charity_number  %}
+
+            <li>Registered Charity Number: {{settings.site_settings.FooterSetting.charity_number}} </li>
+            {% endif %}
             <li>Privacy and Cookies Policy</li>
           </ul>
         </div>
@@ -146,7 +158,7 @@
           </div>
         </div>
         <div class="col-md-7 d-flex align-items-center">
-          <h6 class="white">&#169; VOS, inc. <script type="text/javascript">
+          <h6 class="white">&#169; VOS, inc. 2017 - <script type="text/javascript">
               document.write(new Date().getFullYear());
             </script>, All rights reserved | Made with <i class="fa fa-heart-o"></i> by
             <a href="https://github.com/amajai"> amajai</a>

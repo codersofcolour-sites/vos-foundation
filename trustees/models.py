@@ -10,16 +10,28 @@ from wagtail.core.rich_text import expand_db_html, RichText
 from wagtailmenus.models import MenuPage
 from wagtailmenus.panels import menupage_panel
 
+from streams import blocks
+
 class TrusteesPage(Page): 
     parent_types = ['about.AboutPage']  
     subpage_types = ['TrusteePage']
     max_count = 1
+
+    content = StreamField([
+        ('text_with_button', blocks.TextWithButtonBlock()),
+        ('ltext_rimage', blocks.TextWithRightImageBlock()),
+        ('jumbo_text', blocks.JumboTextBlock()),
+    ], blank=False, null=True)
 
     def get_context(self, request, *args, **kwargs):
         context = super(TrusteesPage, self).get_context(request, *args, **kwargs)
         trustees_list = self.get_children().live()
         context["trustees"] = trustees_list
         return context
+
+    content_panels = Page.content_panels + [
+        StreamFieldPanel('content')
+    ]
 
 class TrusteePage(Page):
     parent_page_type =[
@@ -49,6 +61,7 @@ class TrusteePage(Page):
     content_panels = Page.content_panels + [
         FieldPanel('trustee_name'),
         FieldPanel('trustee_role'),
+        FieldPanel('trustee_info', classname="full"),
         ImageChooserPanel('trustee_image'),        
         MultiFieldPanel([
           FieldPanel('email'),          
@@ -58,5 +71,4 @@ class TrusteePage(Page):
           FieldPanel('instagram'),
           FieldPanel('youtube')
           ], heading="Trustee social media",),
-        FieldPanel('trustee_info', classname="full"),
     ]
