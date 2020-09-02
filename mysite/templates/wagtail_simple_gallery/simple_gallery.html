@@ -1,7 +1,7 @@
 {% load static wagtailimages_tags wagtailsimplegallery_tags %}
 
   <link rel="stylesheet" href="{% static 'css/baguetteBox.min.css' %}"/>
-  <div class="row gallery-container justify-content-center pb-4">
+  <div class="gallery-container justify-content-center pb-4">
   {% for img in gallery_images %}
     {% image img fill-200x180 as img_thumb %}
     {% image img original as org_img %}
