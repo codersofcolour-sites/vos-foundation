@@ -61,8 +61,8 @@ class JumboTextBlock(blocks.StructBlock):
 
 class TextWithButtonBlock(blocks.StructBlock):
   text = blocks.RichTextBlock(features=['p','link', 'bold', 'italic',])
-  button_name = blocks.CharBlock(max_length=100, help_text='Add text')
-  Button_link = blocks.PageChooserBlock()
+  button_name = blocks.CharBlock(max_length=100, help_text='Add text', required=False)
+  Button_link = blocks.PageChooserBlock(required=False)
 
   class Meta:
     template = 'streams/text_with_button.html'

@@ -64,7 +64,7 @@ class HomePage(Page):
         on_delete=models.SET_NULL,
         related_name='+',
     )
-    button_text_1 = models.CharField(max_length=50, blank=False, null=True)
+    button_text_1 = models.CharField(max_length=50, blank=True, null=True)
 
     header_2 = models.CharField(max_length=100, blank=False, null=True)
     text_2 = RichTextField(blank=False, features=['p','link', 'bold', 'italic',], null=True)
@@ -75,7 +75,7 @@ class HomePage(Page):
         on_delete=models.SET_NULL,
         related_name='+',
     )
-    button_text_2 = models.CharField(max_length=50, blank=False, null=True)
+    button_text_2 = models.CharField(max_length=50, blank=True, null=True)
     
     content_panels = Page.content_panels + [
         MultiFieldPanel(

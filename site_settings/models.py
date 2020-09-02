@@ -70,7 +70,7 @@ class FooterSetting(BaseSetting):
   phone_number = models.CharField(max_length=30, blank=True)
   address = models.CharField(max_length=250, blank=True, null=True)
   email = models.EmailField(blank=True, null=True) 
-  charity_number = models.CharField(max_length=10, blank=False, null=True)
+  charity_number = models.CharField(max_length=10, blank=True, null=True)
 
   panels = [
       MultiFieldPanel([
@@ -91,9 +91,9 @@ class ImportantPages(BaseSetting):
     select_related = ["donate_page", "home_page"]
 
     donate_page = models.ForeignKey(
-        'wagtailcore.Page', null=True, on_delete=models.SET_NULL, related_name='+')
+        'wagtailcore.Page', null=True, blank=True, on_delete=models.SET_NULL, related_name='+')
     home_page = models.ForeignKey(
-        'wagtailcore.Page', null=True, on_delete=models.SET_NULL, related_name='+')
+        'wagtailcore.Page', null=True, blank=True, on_delete=models.SET_NULL, related_name='+')
 
     panels = [
         PageChooserPanel('home_page'),

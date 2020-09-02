@@ -28,6 +28,7 @@
                         <img class="card-img-top" src="{{img.url}}" alt="{{img.alt}}">
                         <div class="card-body">
                             <h5 class="card-title f3">{{trustee.title}}</h5>
+                            <h5 class="card-title f5 dark-blue">{{trustee.trustee_role}}</h5>
                             <p class="card-text">{{trustee.trustee_info|richtext|striptags|truncatechars:150}}</p>
                             <a href="{% pageurl trustee %}" class="link">
                                 <p class="card-text f4 black hover-black-50">Learn more...</p>

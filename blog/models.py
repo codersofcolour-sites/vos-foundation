@@ -64,7 +64,7 @@ class BlogPage(Page):
         ('paragraph', blocks.RichTextBlock(icon="pilcrow", features=['p','link', 'bold', 'italic', 'ol', 'ul'])),
         ('image', ImageChooserBlock(icon="image")),
         ('quote', blocks.StructBlock([
-            ('source', blocks.CharBlock(classname="full",
+            ('source', blocks.CharBlock(blank=True, classname="full",
                                         help_text='The source of where that quote came from.')),
             ('quote_text', blocks.CharBlock(
                 classname="full", help_text='Add quote.')),

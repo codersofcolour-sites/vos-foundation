@@ -31,7 +31,7 @@
                     <a href="{% pageurl post %}">
                         <h5 class="card-title b black hover-black-60">{{ post.title }}</h5>
                     </a>
-                    <p class="card-subtitle my-3 text-muted">{{ post.specific.date }}</p>
+                    <p class="card-subtitle my-3 blue">{{ post.specific.date }}</p>
                     {% if post.specific.first_paragraph %}
                     <p class="card-title">
                         {{post.specific.first_paragraph|richtext|striptags|truncatechars:120}}

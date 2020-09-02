@@ -8,7 +8,7 @@
       <a href="{{ img|original_url }}" title="{{ img_thumb.alt|hide_num_order }}">
         <img src="{{ img_thumb.url }}" alt="{{ img_thumb.alt }}" class="gallery-thumbnail">
       </a>
-      <link rel="preload" href="{{ img|original_url }}">
+      <link rel="preload" href="{{ img.url }}">
     </div>
   {% endfor %}
   </div>
