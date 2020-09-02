@@ -60,7 +60,7 @@ class HomePage(Page):
     button_link_1 = models.ForeignKey(
         'wagtailcore.Page',
         null=True,
-        blank=False,
+        blank=True,
         on_delete=models.SET_NULL,
         related_name='+',
     )
@@ -71,7 +71,7 @@ class HomePage(Page):
     button_link_2 = models.ForeignKey(
         'wagtailcore.Page',
         null=True,
-        blank=False,
+        blank=True,
         on_delete=models.SET_NULL,
         related_name='+',
     )
