@@ -27,12 +27,21 @@ class HomePageCarousel(Orderable):
     )
     carousel_header = models.CharField(max_length=150, blank=True, null=True)
     carousel_text = models.CharField(max_length=300, blank=True, null=True)
-    
+    button_text = models.CharField(max_length=20, blank=True, null=True)
+    page_link = models.ForeignKey(
+        'wagtailcore.Page',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+    )
     panels = [
         MultiFieldPanel([
             ImageChooserPanel("carousel_image"),
             FieldPanel("carousel_header"),
             FieldPanel("carousel_text"),   
+            FieldPanel("button_text"),
+            PageChooserPanel("page_link"),            
         ], heading='Carousel')
 ]  
 
@@ -79,7 +88,7 @@ class HomePage(Page):
     
     content_panels = Page.content_panels + [
         MultiFieldPanel(
-            [InlinePanel("carousel_images", max_num=5,
+            [InlinePanel("carousel_images", max_num=7,
                          min_num=1, label="Image"), ],
             heading="Carousel Images",
         ),

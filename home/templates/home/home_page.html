@@ -15,6 +15,15 @@
         {% if loop_cycle.carousel_text %}
           <p class="f4">{{loop_cycle.carousel_text}}</p>
         {% endif %}
+        {% if loop_cycle.page_link %}
+          <a href="{{loop_cycle.page_link.url}}" class="theme-btn4 py-2 px-4">
+            {% if loop_cycle.button_text %}
+            {{loop_cycle.button_text}}
+            {% else %}
+              Link
+            {% endif %}
+            </a>
+        {% endif %}
       </div>
     {% endif %}
     <img src="{{carousel_img.url}}" alt="{{ carousel_img.alt }}">
