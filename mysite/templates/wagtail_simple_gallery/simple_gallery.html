@@ -1,23 +1,23 @@
 {% load static wagtailimages_tags wagtailsimplegallery_tags %}
 
-  <link rel="stylesheet" href="{% static 'css/baguetteBox.min.css' %}"/>
-  <div class="gallery-container justify-content-center pb-4">
-  {% for img in gallery_images %}
-    {% image img fill-200x180 as img_thumb %}
-    {% image img original as org_img %}
-    <div class="gallery gallery-thumbnail-container col-xs-3 my-1 mx-1">
-      <a href="{{ org_img.url }}" title="{{ img_thumb.alt|hide_num_order }}">
-        <img src="{{ img_thumb.url }}" alt="{{ img_thumb.alt }}" class="gallery-thumbnail">
-      </a>
-      <link rel="preload" href="{{ org_img.url }}">
-    </div>
-  {% endfor %}
+<link rel="stylesheet" href="{% static 'css/baguetteBox.min.css' %}"/>
+<div class="row justify-content-center gallery-container pb-5 mx-1">
+{% for img in gallery_images %}
+  {% image img fill-220x180 as img_thumb %}
+  {% image img original as org_img %}
+  <div class="gallery gallery-thumbnail-container col-xs-3 m-1">
+    <a href="{{ org_img.url }}" title="{{ img_thumb.alt|hide_num_order }}">
+      <img src="{{ img_thumb.url }}" alt="{{ img_thumb.alt }}" class="gallery-thumbnail">
+    </a>
+    <link rel="preload" href="{{ org_img.url }}">
   </div>
+{% endfor %}
+</div>
 
 
-  {% if page.use_lightbox or use_lightbox %}
-  <script src="{% static 'js/baguetteBox.min.js' %}"></script>
-  <script type="text/javascript">
-    baguetteBox.run('.gallery-container');
-  </script>
-  {% endif %}
+{% if page.use_lightbox or use_lightbox %}
+<script src="{% static 'js/baguetteBox.min.js' %}"></script>
+<script type="text/javascript">
+  baguetteBox.run('.gallery-container');
+</script>
+{% endif %}
