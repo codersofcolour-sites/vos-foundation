@@ -13,6 +13,11 @@
             </div>
         </div>
         <h2 class="f1-ns f4 mt0 b black-90 mt-4">{{page.title}}</h2>
+        {% for cat in page.categories.all %}
+        <a class="tag hover-bg-black-50" href="{{post.get_parent.url}}category/{{cat.slug}}">
+          <span class="f3">{{cat}}</span>
+        </a>
+        {% endfor %}
         <p class="black-50 f2 mb-4">{{ page.date }}</p>
         {% with blocks=self.news_content %}
         {% for block in blocks %}

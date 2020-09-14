@@ -9,3 +9,4 @@ from wagtail.admin.edit_handlers import StreamFieldPanel
 class AboutPage(Page):   
     subpage_types = ['trustees.TrusteesPage', 'history.HistoryPage', 'beneficiaries.BeneficiariesPage', 'supporters.SupportersPage']
     max_count = 1 
+

@@ -56,8 +56,13 @@
     {% else %}
     <div class="justify-content-center py-5 bg-lilac">
         <div class="container heading-section text-center">
-            <h3 class="f2 p-5">There are no article at the moment..</h3>
-        </div>
+            <h3 class="f2 p-5">There are no article under [{{cat}}] category at the moment.</h3>
+            <h5>    
+              <a href="{{ page.url }}" class="f3 dib ph2 link mid-gray dim hover-black-50"><i
+              class="fa fa-arrow-left"></i> Return back
+              </a>
+            </h5>
+          </div>
     </div>
     {% endif %}
 </div>
