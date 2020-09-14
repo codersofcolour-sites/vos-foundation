@@ -321,8 +321,28 @@ a .newlink:hover {
 
 .bg-cover{
   background-repeat: no-repeat;
+  background-position: center center;
   background-size: cover;
   z-index: 0;
+}
+
+.blog-cover{
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 500px !important;
+  z-index: 0;
+}
+
+.top-img-view{
+  background-position: top;
+}
+
+.center-img-view{
+  background-position: center;
+}
+
+.bottom-img-view{
+  background-position: bottom;
 }
 .bg-h{
   min-height: 500px;
@@ -413,4 +433,30 @@ header{
 
 .gallery{
   box-shadow: 0 0 4px -1px #000;
+}
+
+.tag{
+  background-color: var(--lilac);
+  padding: 3px 5px;
+  color: black;
+  border-radius: 5px;
+  margin-right: 6px;
+}
+
+.tag2{
+  background-color: var(--dgrey);
+  padding: 3px 5px;
+  color: white;
+  border-radius: 5px;
+  margin-right: 6px;
+}
+
+
+.page-item.active .page-link {
+  background-color: #5d51fb;
+  border-color: #5d51fb;
+}
+
+.page-link {
+  color: #5d51fb;
 }
