@@ -295,10 +295,6 @@ a .newlink:hover {
 }
 
 
-.what-we-do .card-body{
-  background-color: var(--dgrey);
-}
-
 .video::after{
   content: '';
   position: absolute;

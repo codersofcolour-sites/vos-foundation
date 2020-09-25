@@ -7,13 +7,13 @@ from wagtail.admin.edit_handlers import (
     MultiFieldPanel,
     InlinePanel,
     PageChooserPanel,
+    StreamFieldPanel
 )
 from wagtail.core.models import Page, Orderable
 from wagtail.core.fields import RichTextField
 from wagtail.images.edit_handlers import ImageChooserPanel
 
 from wagtail.core.fields import StreamField
-from wagtail.admin.edit_handlers import StreamFieldPanel, InlinePanel, PageChooserPanel
 from streams import blocks
 
 class HomePageCarousel(Orderable):

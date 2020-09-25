@@ -30,10 +30,9 @@
         {% endif %}
         {% endfor %}
         {% endwith %} 
-        <p class="f3-l f4-m f2-ns b  mb-0">{{ page.contact_info }}</p>
-        <p class="f3-l f4-m f2-ns mb-0"> <span class="b">Name: </span> {{ page.contact_name }}</p>
-        <p class="f3-l f4-m f2-ns mb-0"> <span class="b">Email: </span> <a class="black-90 hover-blue" href="mailto:{{ page.email }}">{{ page.email }}</a> </p>
-        <p class="f3-l f4-m f2-ns"> <span class="b">Phone: </span> {{ page.phone_number }}</p>
+        {% if page.button_link.url  %}  
+        <a class="btn theme-btn3 mb-4 f4" href="{{page.button_link.url}}">{{page.button_text}}</a>
+       {% endif %}
     </div>
 </section>
 {% endblock %}
