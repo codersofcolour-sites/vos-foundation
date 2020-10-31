@@ -1,7 +1,10 @@
 {% if value.gofundme_page_link %}
-<div class="col-md justify-content-center mb-4"></div>
-  <div class="gfm-embed" data-url="{{value.gofundme_page_link}}/widget/large/">
-  </div>
-  <script defer src="https://www.gofundme.com/static/js/embed.js"></script>
+<div class="bg-green py-5 col-md flex justify-content-center align-items-center flex-column mb-4">
+  <img src="https://techcrunch.com/wp-content/uploads/2012/09/gofundme_logo.png?w=730&crop=1" height='80' alt="">
+  <br>
+  <a href="{{value.gofundme_page_link}}">
+    <img class="mt-5" src="https://www.sarasotadems.org/wp-content/uploads/2017/08/donate-button.png" height='90'  />
+  </a>
+
 </div>
 {% endif %}
