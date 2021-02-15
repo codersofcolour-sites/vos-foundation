@@ -57,8 +57,8 @@ class BlogIndexPage(RoutablePageMixin, Page):
 
     def get_context(self, request, *args, **kwargs):
         context = super(BlogIndexPage, self).get_context(request, *args, **kwargs)
-        live_newspages = self.get_children().live()
-        all_posts = live_newspages.live().order_by('-first_published_at')
+        live_newspages = self.get_children().order_by('-blogpage__date')
+        all_posts = live_newspages.live()
         paginator = Paginator(all_posts, 18)
         page = request.GET.get("page")
         try: 
